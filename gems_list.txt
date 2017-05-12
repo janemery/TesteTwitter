@@ -1,0 +1,8 @@
+byebug (9.0.6)
+calabash-cucumber (0.20.5)
+capybara (2.14.0, 2.13.0, 1.1.4)
+capybara-webkit (1.14.0)
+cucumber (2.4.0)
+selenium-webdriver (2.53.4)
+rspec-expectations-3.6.0
+Firefox 33 (https://ftp.mozilla.org/pub/firefox/releases/33.0/)
