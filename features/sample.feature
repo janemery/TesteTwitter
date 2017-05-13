@@ -12,3 +12,9 @@ Scenario: Send a message to Greenmile user
   And I write a message
   And select send
   Then the message should be sent to Greenmile user
+
+Scenario: Share a message from Greenmile user
+  Given I am logged on
+  When I choose a message from Greenmile user
+  And I share it
+  Then the message should be shown in my timeline

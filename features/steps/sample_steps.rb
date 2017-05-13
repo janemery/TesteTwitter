@@ -45,3 +45,21 @@ Then(/^the message should be sent to Greenmile user$/) do
   save_page
   expect(page).to have_content(@my_tweet_message)
 end
+
+When(/^I choose a message from Greenmile user$/) do
+  visit '/JaneMeryC/'
+  page.execute_script "window.scrollBy(0, $(window).height()/2)"
+  tweet = find('.tweet', text: 'Olá mundo3')
+  tweet.all('button')[2].click
+end
+
+When(/^I share it$/) do
+  find('#retweet-tweet-dialog > #retweet-tweet-dialog-dialog > .modal-content form .tweet-button').click
+end
+
+Then(/^the message should be shown in my timeline$/) do
+  sleep 3
+  visit '/JanymeryTeste/'
+  save_page
+  expect(page).to have_content(@tweet)
+end
