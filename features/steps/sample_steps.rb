@@ -5,7 +5,7 @@ Given(/^I am at the login page$/) do
 end
 
 Given(/^I fill a valid e\-mail and password$/) do
-  fill_in id: 'signin-email', with: 'JanymeryTeste'
+  fill_in id: 'signin-email', with: 'testtwitter94@gmail.com'
   fill_in id: 'signin-password', with: 'TestedoTwitter'
 end
 
@@ -15,16 +15,16 @@ end
 
 Then(/^I should see the home page$/) do
   expect(page).to have_content('Teste do Twit')
-  expect(page).to have_content('@JanymeryTeste')
+  expect(page).to have_content('@TesttwitTwiter')
 end
 
 Given(/^I am logged on$/) do
   visit('/')
-  fill_in id: 'signin-email', with: 'JanymeryTeste'
+  fill_in id: 'signin-email', with: 'testtwitter94@gmail.com'
   fill_in id: 'signin-password', with: 'TestedoTwitter'
   click_button('Log in')
   expect(page).to have_content('Teste do Twit')
-  expect(page).to have_content('@JanymeryTeste')
+  expect(page).to have_content('@TesttwitTwiter')
 end
 
 When(/^I select message button$/) do
@@ -33,7 +33,7 @@ end
 
 When(/^I write a message$/) do
   timestamp = Time.new.to_i
-  @my_tweet_message = "This is my tweet message number #{timestamp}"
+  @my_tweet_message = "This is my tweet message to @GreenMileTests #{timestamp}"
   find('#tweet-box-global').set(@my_tweet_message)
 end
 
@@ -47,9 +47,9 @@ Then(/^the message should be sent to Greenmile user$/) do
 end
 
 When(/^I choose a message from Greenmile user$/) do
-  visit '/JaneMeryC/'
+  visit '/GreenMileTests'
   page.execute_script "window.scrollBy(0, $(window).height()/2)"
-  tweet = find('.tweet', text: 'Olá mundo3')
+  tweet = find('.tweet', text: 'GreenMile rocks! #automatedtests')
   tweet.all('button')[2].click
 end
 
@@ -58,8 +58,8 @@ When(/^I share it$/) do
 end
 
 Then(/^the message should be shown in my timeline$/) do
-  sleep 3
-  visit '/JanymeryTeste/'
+  sleep 2
+  visit '/TesttwitTwiter/'
   save_page
   expect(page).to have_content(@tweet)
 end
